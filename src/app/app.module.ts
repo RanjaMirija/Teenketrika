@@ -15,6 +15,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
+import { NgAisModule } from 'angular-instantsearch';
+
 
 
 const icons = {
@@ -30,14 +32,15 @@ const icons = {
     HomeComponent,
     HeaderComponent,
     JobFilterComponent,
-    JobResultComponent
+    JobResultComponent,
   ],
   imports: [
     BrowserModule,
+    NgAisModule,
     AppRoutingModule,
     FeatherModule.pick(icons),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
 
 
   ],
