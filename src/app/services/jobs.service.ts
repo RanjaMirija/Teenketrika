@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import {  Observable } from 'rxjs';
 import { Job } from '../interfaces/job';
 
 @Injectable({
@@ -9,11 +9,13 @@ import { Job } from '../interfaces/job';
 export class JobsService {
 
   jobs!: Observable<Job[]>;
-  jobsSubject : BehaviorSubject<Job[]> = new BehaviorSubject(<Job[]>[]);
+
+  private jobDoc!: AngularFirestoreDocument<Job>;
+  job$!: Observable<Job | undefined>;
 
 
   constructor(
-    private afs : AngularFirestore,
+    private afs : AngularFirestore
   ) {
     //this.getJobs();
   }
@@ -22,6 +24,14 @@ export class JobsService {
     const collections = this.afs.collection<Job>('Jobs');
     this.jobs = collections.valueChanges();
   }
+   getJob(docID : string){
+    this.jobDoc = this.afs.doc<Job>(docID);
+    this.job$ = this.jobDoc.valueChanges();
+
+  }
+
+
+
 
 
 

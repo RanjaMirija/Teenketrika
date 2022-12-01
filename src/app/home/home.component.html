@@ -1,10 +1,95 @@
-<div class="container-fluid">
+<ais-instantsearch [config]="config">
+
+  <!--div *ngIf="job">
+    <p class="fw-light">{{job.jobDescription}}</p>
+
+    <div [innerHtml]="job.jobDescription"></div>
+  </div-->
+
+<div class="container-fluid p-5 m-3">
+
   <div class="row">
-    <div class="col-lg-2 col-md-3 col-xs-4">
-      <app-job-filter></app-job-filter>
+    <div class="col-md-12">
+      <ais-search-box></ais-search-box>
     </div>
-    <div class="col-lg-10 col-md-9 col-xs-8">
-      <app-job-result></app-job-result>
+    <div class="col-md-12 d-flex flex-row-reverse py-3">
+      <ais-stats>
+        <ng-template let-state="state">
+          {{state.nbHits}} results found in {{state.processingTimeMS}}ms.
+        </ng-template>
+      </ais-stats>
+    </div>
+
+    <div class="col-md-4">
+     <div>
+      <p class="lead">Entreprises</p>
+      <ais-clear-refinements></ais-clear-refinements>
+      <ais-refinement-list
+      attribute="companyName"
+      operator="or"
+      [limit]="5"
+      [showMoreLimit]="20"
+      showMoreLabel="plus"
+      showLessLabel="moins"
+      [searchable]="true"
+      >
+      </ais-refinement-list>
+     </div>
+
+     <div>
+      <p class="lead">Region</p>
+      <ais-refinement-list
+      attribute="companySite"
+      >
+      </ais-refinement-list>
+     </div>
+    </div>
+
+
+
+    <div class="col-md-8">
+      <ais-hits>
+        <ng-template let-hits="hits">
+          <ol class="ais-Hits-list">
+            <li *ngFor="let hit of hits" class="ais-Hits-item py-2 m-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {{hit.jobTitle |titlecase}}
+                    </h5>
+                    <h6><span class="badge bg-secondary">{{hit.jobSousCategorie}}</span></h6>
+                    <p class="card-text">{{ hit.companyName }}</p>
+                    <a class="btn btn-outline-primary" (click)="onGetJob(hit.path,content)">Consulter</a>
+                  </div>
+                </div>
+
+            </li>
+
+          </ol>
+        </ng-template>
+      </ais-hits>
+      <ais-pagination class="d-flex justify-content-center"></ais-pagination>
+    </div>
+    <div class="col-md-12 ">
+
     </div>
   </div>
+
 </div>
+
+</ais-instantsearch>
+
+<ng-template #content let-modal >
+	<div class="modal-header" *ngIf="job">
+		<h4 class="modal-title">{{job.jobTitle | titlecase}}</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p *ngIf="job" [innerHtml]="job.jobDescription"></p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+	</div>
+</ng-template>
+
+

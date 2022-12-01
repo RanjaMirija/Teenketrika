@@ -2,6 +2,12 @@ import { JobsService } from './../../services/jobs.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Job } from 'src/app/interfaces/job';
+import algoliasearch from 'algoliasearch';
+
+const searchClient = algoliasearch(
+  '4SSZHFWZTF',
+  '78d156d84098501557c803cde2445e12'
+)
 
 @Component({
   selector: 'app-job-result',
@@ -9,6 +15,11 @@ import { Job } from 'src/app/interfaces/job';
   styleUrls: ['./job-result.component.scss']
 })
 export class JobResultComponent implements OnInit, OnDestroy {
+
+  config = {
+    indexName: 'indexJobs',
+    searchClient
+  }
 
   jobs: Job[] = [];
   subscription!: Subscription;

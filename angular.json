@@ -29,6 +29,8 @@
             ],
             "styles": [
               "./node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/instantsearch.css/themes/reset.css",
+              "node_modules/instantsearch.css/themes/satellite.css",
               "src/styles.scss"
             ],
             "scripts": [

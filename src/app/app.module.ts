@@ -1,3 +1,5 @@
+import { NgAisModule } from 'angular-instantsearch';
+
 import { FeatherModule } from 'angular-feather';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -15,7 +17,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
-import { NgAisModule } from 'angular-instantsearch';
+
+
 
 
 
@@ -36,7 +39,7 @@ const icons = {
   ],
   imports: [
     BrowserModule,
-    NgAisModule,
+    NgAisModule.forRoot(),
     AppRoutingModule,
     FeatherModule.pick(icons),
     AngularFireModule.initializeApp(environment.firebase),
