@@ -1,33 +1,33 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Teenketrika</a>
+    <a class="navbar-brand">Teenketrika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+          <a class="nav-link active" aria-current="page" >Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" >About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Inscription</a>
+          <a class="nav-link" >Inscription</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Connexion</a>
+          <a class="nav-link" [routerLink]="['/auth']" >Connexion</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Ranja Mirija
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Historique</a></li>
-            <li><a class="dropdown-item" href="#">Favoris</a></li>
+            <li><a class="dropdown-item" >Profile</a></li>
+            <li><a class="dropdown-item">Historique</a></li>
+            <li><a class="dropdown-item" >Favoris</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="#">Déconnexion</a></li>
+            <li><a class="dropdown-item text-danger">Déconnexion</a></li>
           </ul>
         </li>
       </ul>
