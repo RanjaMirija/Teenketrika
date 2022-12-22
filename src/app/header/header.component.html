@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand">Teenketrika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -7,27 +7,26 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" >Accueil</a>
+          <a class="nav-link active" [routerLink]="['/']" >Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" >About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" >Inscription</a>
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" [routerLink]="['/auth','signup']" >Inscription</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!currentUser">
           <a class="nav-link" [routerLink]="['/auth']" >Connexion</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="currentUser">
           <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Ranja Mirija
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" >Profile</a></li>
-            <li><a class="dropdown-item">Historique</a></li>
-            <li><a class="dropdown-item" >Favoris</a></li>
+            <li><a class="dropdown-item btn" [routerLink]="['/dashboard']" >Tableau de bord</a></li>
+            <li><a class="dropdown-item btn" >Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger">Déconnexion</a></li>
+            <li><a class="dropdown-item text-danger btn" (click)="onSignout()">Déconnexion</a></li>
           </ul>
         </li>
       </ul>

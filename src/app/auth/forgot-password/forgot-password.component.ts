@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  forgotPasswordForm!: FormGroup;
+  message: String = '';
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.initForgotPassword();
+  }
+
+  initForgotPassword(): void {
+    this.forgotPasswordForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    })
+  }
+
+  onSubmitForgotPasswordForm(): void {
+    this.authService.sendPasswordResetEmail(this.forgotPasswordForm.value.email)
+    .then(()=>{
+      this.message = 'L\'email de réinitialisation du mot de passe a été envoyé à votre adresse.'
+    }).catch(console.error);
   }
 
 }

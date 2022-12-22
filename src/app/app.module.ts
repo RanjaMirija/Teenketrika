@@ -16,10 +16,6 @@ import { Camera,Heart,Github,Search } from 'angular-feather/icons';
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
-import { ForgotVerifyEmailComponent } from './auth/forgot-verify-email/forgot-verify-email.component';
 
 
 const icons = {
@@ -35,11 +31,7 @@ const icons = {
     HomeComponent,
     HeaderComponent,
     JobFilterComponent,
-    JobResultComponent,
-    SignInComponent,
-    SignUpComponent,
-    ForgotPasswordComponent,
-    ForgotVerifyEmailComponent,
+    JobResultComponent
   ],
   imports: [
     BrowserModule,
