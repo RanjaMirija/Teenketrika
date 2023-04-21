@@ -16,7 +16,7 @@ import { Camera,Heart,Github,Search } from 'angular-feather/icons';
 import { environment } from './../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const icons = {
   'Camera': Camera,
@@ -41,7 +41,8 @@ const icons = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
 
 
   ],

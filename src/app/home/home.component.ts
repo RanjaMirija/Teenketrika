@@ -46,7 +46,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       next : (data) => {
         this.job = data
         console.log(data)
-        this.modalService.open(content, { size: 'xl' });
+        this.modalService.open(content, {
+          size: 'xl',
+          centered: true
+        });
       },
       error : console.error
     })

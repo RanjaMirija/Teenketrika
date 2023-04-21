@@ -51,8 +51,8 @@
       <ais-hits>
         <ng-template let-hits="hits">
           <ol class="ais-Hits-list">
-            <li *ngFor="let hit of hits" class="ais-Hits-item py-2 m-3">
-                <div class="card">
+            <li *ngFor="let hit of hits" class="ais-Hits-item ">
+                <div class="card w-100">
                   <div class="card-body">
                     <h5 class="card-title">
                       {{hit.jobTitle |titlecase}}
